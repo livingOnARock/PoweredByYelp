@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import BusinessList from "./components/Businesses";
+import SearchBar from "./components/Searchbar";
+import Yelp from "./api/Yelp";
+import Headerimg from "./yelpHeaderBowlsBackground.jpg";
+import HeaderPic from "./yelpHeaderBowls1.jpg";
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      businesses: []
+    };
+    this.searchYelp = this.searchYelp.bind(this);
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  searchYelp(term, location, sortBy) {
+    Yelp.search(term, location, sortBy).then(businesses => {
+      this.setState({
+        businesses: businesses
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div
+        className="App"
+        style={{
+          width: "100%",
+          minHeight: "100vh",
+          backgroundImage: `url(${Headerimg})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "noRepeat"
+        }}
+      >
+        <h1 style={{ color: "white" }}>Powered By Yelp</h1>
+        {/* <img src={HeaderPic} width="100%" /> */}
+        <SearchBar searchYelp={this.searchYelp} />
+        <BusinessList businesses={this.state.businesses} />
+      </div>
+    );
+  }
 }
 
 export default App;
