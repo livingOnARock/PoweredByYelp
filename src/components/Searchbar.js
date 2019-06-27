@@ -92,7 +92,7 @@ class SearchBar extends React.Component {
             />
             <br />
             <button type="submit" className="pure-button">
-              Sign in
+              Search Yelp
             </button>
           </fieldset>
         </form>
@@ -101,30 +101,3 @@ class SearchBar extends React.Component {
   }
 }
 export default SearchBar;
-
-// <div className="SearchBar">
-//   <div className="SearchBar-sort-options">
-//     <ul
-//       style={{
-//         display: "inline-flex",
-//         listStyle: "none",
-//         margin: "10px",
-//         color: "white"
-//       }}
-//     >
-//       {this.renderSortByOptions()}
-//     </ul>
-//   </div>
-//   <div className="SearchBar-fields">
-//     <input
-//       type="text"
-//       id="name"
-//       onChange={this.handleTermChange}
-//       placeholder="Search Businesses"
-//     />
-//     <input onChange={this.handleLocationChange} placeholder="Where?" />
-//   </div>
-//   <button className="SearchBar-submit" onClick={this.handleSearch}>
-//     Let's Go
-//   </button>
-// </div>
